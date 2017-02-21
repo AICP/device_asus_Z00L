@@ -27,6 +27,9 @@ TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
 # Kernel
 TARGET_KERNEL_CONFIG := Z00L_defconfig
 
+TARGET_INIT_VENDOR_LIB := libinit_msm8916
+TARGET_RECOVERY_DEVICE_MODULES :=libinit_msm8916
+
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 

@@ -17,8 +17,14 @@
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/asus/Z00L/Z00L-vendor.mk)
 
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += device/asus/Z00L/overlay
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sf.lcd_density=320
+    ro.min_freq_0=400000
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -30,3 +36,12 @@ TARGET_SCREEN_WIDTH := 720
 
 # Inherit from msm8916-common
 $(call inherit-product, device/asus/msm8916-common/msm8916.mk)
+
+PRODUCT_PACKAGES += \
+    init.target.rc
+
+PRODUCT_COPY_FILES += \
+    device/asus/Z00ED/audio/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml
+
+PRODUCT_PACKAGES += \
+    WCNSS_qcom_wlan_nv.bin
